@@ -1,0 +1,10 @@
+[
+  {
+    "_UserType": "Affiliate",
+    "DiscountId": 1
+  },
+  {
+    "_UserType": "Employee",
+    "DiscountId": 2
+  }
+]

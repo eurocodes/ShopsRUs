@@ -1,0 +1,34 @@
+[
+  {
+    "FirstName": "Snow",
+    "LastName": "Flores",
+    "UserName": "snowflores",
+    "email": "snowflores@bitendrex.com",
+    "Location": "Lagos",
+    "UserTypeId": 1
+  },
+  {
+    "FirstName": "Ramona",
+    "LastName": "Durham",
+    "UserName": "taryosky",
+    "email": "taryosky@gmail.com",
+    "Location": "Abuja",
+    "UserTypeId": 2
+  },
+  {
+    "FirstName": "Heather",
+    "LastName": "Kramer",
+    "UserName": "heatherkramer",
+    "email": "heatherkramer@bitendrex.com",
+    "Location": "Rivers",
+    "UserTypeId": 2
+  },
+  {
+    "FirstName": "Dalton",
+    "LastName": "Welch",
+    "UserName": "daltonwelch",
+    "email": "daltonwelch@bitendrex.com",
+    "Location": "Plateau",
+    "UserTypeId": 1
+  }
+]

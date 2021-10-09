@@ -1,0 +1,10 @@
+[
+  {
+    "Type": "Employee",
+    "Percentage": 30
+  },
+  {
+    "Type": "Affiliate",
+    "Percentage": 10
+  }
+]
