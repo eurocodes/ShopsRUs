@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Services
+namespace Infrastructure.Repositories
 {
-    public class ProductService : IProductService
+    public class ProductRepository : IProductRepository
     {
         private readonly AppDbContext _context;
 
-        public ProductService(AppDbContext context)
+        public ProductRepository(AppDbContext context)
         {
             _context = context;
         }

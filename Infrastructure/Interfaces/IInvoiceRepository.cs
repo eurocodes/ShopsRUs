@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Interfaces
 {
-    public interface IInvoiceService
+    public interface IInvoiceRepository
     {
         Task<Invoice> GetTotalInvoiceAmountAsync(int customerId, ICollection<Product> products);
     }

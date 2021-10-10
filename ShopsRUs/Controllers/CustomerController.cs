@@ -15,26 +15,26 @@ namespace ShopsRUs.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly ICustomerService _service;
+        private readonly ICustomerRepository _repository;
         private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerService service, IMapper mapper)
+        public CustomerController(ICustomerRepository repository, IMapper mapper)
         {
-            _service = service;
+            _repository = repository;
             _mapper = mapper;
         }
 
         [HttpGet("get-all")]
         public async Task<IActionResult> GetAll()
         {
-            var customers = await _service.GetAllCustomersAsync();
+            var customers = await _repository.GetAllCustomersAsync();
             return Ok(customers);
         }
 
         [HttpGet("get-by-id")]
         public async Task<IActionResult> GetById([FromQuery]int id)
         {
-            var customer = await _service.GetCustomerByIdAsync(id);
+            var customer = await _repository.GetCustomerByIdAsync(id);
             if (customer == null) return NotFound();
 
             return Ok(customer);
@@ -43,7 +43,7 @@ namespace ShopsRUs.Controllers
         [HttpGet("get-by-name")]
         public async Task<IActionResult> GetByName([FromQuery] string name)
         {
-            var customer = await _service.GetCustomerByNameAsync(name);
+            var customer = await _repository.GetCustomerByNameAsync(name);
             if (customer == null) return NotFound();
 
             return Ok(customer);
@@ -54,9 +54,9 @@ namespace ShopsRUs.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var createdCustomer = await _service.CreateCustomerAsync(_mapper.Map<Customer>(customer));
+            var createdCustomer = await _repository.CreateCustomerAsync(_mapper.Map<Customer>(customer));
 
-            if (await _service.SaveChangesAsync()) return Ok(createdCustomer);
+            if (await _repository.SaveChangesAsync()) return Ok(createdCustomer);
             return BadRequest();
 
         }

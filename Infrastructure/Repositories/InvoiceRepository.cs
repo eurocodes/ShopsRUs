@@ -9,14 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Services
+namespace Infrastructure.Repositories
 {
-    public class InvoiceService : IInvoiceService
+    public class InvoiceRepository : IInvoiceRepository
     {
         private readonly AppDbContext _context;
-        private readonly IProductService _productService;
+        private readonly IProductRepository _productService;
 
-        public InvoiceService(AppDbContext context, IProductService productService)
+        public InvoiceRepository(AppDbContext context, IProductRepository productService)
         {
             _context = context;
             _productService = productService;
@@ -26,6 +26,8 @@ namespace Infrastructure.Services
             Invoice invoice = new();
             double amount = 0, invoiceAmount = 0;
             var customer = await _context.Customers.Include(x => x.UserType).FirstOrDefaultAsync(c => c.Id == customerId);
+            if (customer == null)
+                return null;
             var discount = await _context.Discounts.FirstOrDefaultAsync(d => d.Id == customer.UserType.DiscountId);
             var percentage = discount.Percentage;
 
@@ -41,8 +43,7 @@ namespace Infrastructure.Services
                     invoiceAmount += product.Price;
                 }
                 if (product.Name.ToLower() != "groceries" 
-                    && customer.UserType._UserType.ToLower() != "employee"
-                    && customer.UserType._UserType.ToLower() != "affiliate"
+                    && percentage == 0
                     && DateTime.Now.Year - customer.DateJoined.Year > 2)
                 {
                     invoiceAmount += (product.Price - (product.Price * 5 / 100));

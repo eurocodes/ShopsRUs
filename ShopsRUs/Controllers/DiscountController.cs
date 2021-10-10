@@ -15,26 +15,26 @@ namespace ShopsRUs.Controllers
     [ApiController]
     public class DiscountController : ControllerBase
     {
-        private readonly IDiscountServices _service;
+        private readonly IDiscountRepository _repository;
         private readonly IMapper _mapper;
 
-        public DiscountController(IDiscountServices service, IMapper mapper)
+        public DiscountController(IDiscountRepository repository, IMapper mapper)
         {
-            _service = service;
+            _repository = repository;
             _mapper = mapper;
         }
 
         [HttpGet("get-all")]
         public async Task<IActionResult> GetAll()
         {
-            var discounts = await _service.GetAllDiscountAsync();
+            var discounts = await _repository.GetAllDiscountAsync();
             return Ok(discounts);
         }
 
         [HttpGet("get-by-type")]
         public async Task<IActionResult> GetByName([FromQuery] string type)
         {
-            var discount = await _service.GetDiscountByTypeAsync(type);
+            var discount = await _repository.GetDiscountByTypeAsync(type);
             if (discount == null) return NotFound();
 
             return Ok(discount);
@@ -45,7 +45,7 @@ namespace ShopsRUs.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var creted = await _service.AddDiscountAsync(_mapper.Map<Discount>(discount));
+            var creted = await _repository.AddDiscountAsync(_mapper.Map<Discount>(discount));
 
             if (creted) return Ok();
             return BadRequest();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Interfaces
 {
-    public interface IProductService
+    public interface IProductRepository
     {
         Task<Product> AddProduct(Product product);
     }

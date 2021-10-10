@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Services
+namespace Infrastructure.Repositories
 {
-    public class CustomerService : ICustomerService
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly AppDbContext _context;
 
-        public CustomerService(AppDbContext context)
+        public CustomerRepository(AppDbContext context)
         {
             _context = context;
         }

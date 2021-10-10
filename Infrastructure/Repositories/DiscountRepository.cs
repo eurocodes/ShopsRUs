@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Services
+namespace Infrastructure.Repositories
 {
-    public class DiscountService : IDiscountServices
+    public class DiscountRepository : IDiscountRepository
     {
         private readonly AppDbContext _context;
 
-        public DiscountService(AppDbContext context)
+        public DiscountRepository(AppDbContext context)
         {
             _context = context;
         }
