@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Interfaces
 {
-    public interface ICustomerService
+    public interface ICustomerRepository
     {
         Task<Customer> CreateCustomerAsync(Customer customer);
         Task<Customer> GetCustomerByIdAsync(int id);

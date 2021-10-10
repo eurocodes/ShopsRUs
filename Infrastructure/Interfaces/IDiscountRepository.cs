@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Interfaces
 {
-    public interface IDiscountServices
+    public interface IDiscountRepository
     {
         Task<bool> AddDiscountAsync(Discount discount);
         Task<Discount> GetDiscountByTypeAsync(string type);

@@ -15,12 +15,12 @@ namespace ShopsRUs.Controllers
     [ApiController]
     public class InvoiceController : ControllerBase
     {
-        private readonly IInvoiceService _service;
+        private readonly IInvoiceRepository _repository;
         private readonly IMapper _mapper;
 
-        public InvoiceController(IInvoiceService service, IMapper mapper)
+        public InvoiceController(IInvoiceRepository repository, IMapper mapper)
         {
-            _service = service;
+            _repository = repository;
             _mapper = mapper;
         }
 
@@ -32,7 +32,7 @@ namespace ShopsRUs.Controllers
             {
                 productsToAdd.Add(_mapper.Map<Product>(item));
             }
-            var invoice = await _service.GetTotalInvoiceAmountAsync(invoiceDto.CustomerId, productsToAdd);
+            var invoice = await _repository.GetTotalInvoiceAmountAsync(invoiceDto.CustomerId, productsToAdd);
             return Ok(invoice);
         }
     }

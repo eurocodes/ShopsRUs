@@ -1,6 +1,6 @@
 using Domain;
 using Infrastructure.Interfaces;
-using Infrastructure.Services;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,10 +39,10 @@ namespace ShopsRUs
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Register Services
-            services.AddScoped<ICustomerService, CustomerService>();
-            services.AddScoped<IDiscountServices, DiscountService>();
-            services.AddScoped<IInvoiceService, InvoiceService>();
-            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IDiscountRepository, DiscountRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddSwaggerGen(c =>
             {
