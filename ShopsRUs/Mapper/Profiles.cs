@@ -12,10 +12,11 @@ namespace ShopsRUs.Mapper
     {
         public Profiles()
         {
-            CreateMap<CustomerDto, Customer>();
+            CreateMap<CustomerDto, Customer>().ReverseMap();
             CreateMap<UserTypeDto, UserType>();
             CreateMap<DiscountDto, Discount>();
             CreateMap<ProductDto, Product>().ReverseMap();
+            CreateMap<Invoice, InvoiceReturnDto>();
         }
     }
 }

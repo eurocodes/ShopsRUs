@@ -6,5 +6,9 @@
   {
     "_UserType": "Employee",
     "DiscountId": 2
+  },
+  {
+    "_UserType": "Regular",
+    "DiscountId": 3
   }
 ]

@@ -10,7 +10,6 @@ namespace Domain.DTO
     public class InvoiceDto
     {
         [Required]
-        public int CustomerId { get; set; }
         public ICollection<ProductDto> ProductsDto { get; set; }
     }
 }

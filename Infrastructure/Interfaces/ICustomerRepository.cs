@@ -9,7 +9,7 @@ namespace Infrastructure.Interfaces
 {
     public interface ICustomerRepository
     {
-        Task<Customer> CreateCustomerAsync(Customer customer);
+        Task<bool> CreateCustomerAsync(Customer customer);
         Task<Customer> GetCustomerByIdAsync(int id);
         Task<Customer> GetCustomerByNameAsync(string name);
         Task<ICollection<Customer>> GetAllCustomersAsync();

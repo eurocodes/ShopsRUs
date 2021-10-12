@@ -18,17 +18,13 @@ namespace Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task<Customer> CreateCustomerAsync(Customer customer)
+        public async Task<bool> CreateCustomerAsync(Customer customer)
         {
-            if (customer != null)
-            {
-                customer.UserType = await _context.UserTypes.FirstOrDefaultAsync(u => u.Id == customer.UserTypeId);
-                customer.UserType.Discount = await _context.Discounts.FirstOrDefaultAsync(d => d.Id == customer.UserType.DiscountId);
-                await _context.Customers.AddAsync(customer);
-                return customer;
-            }
+            customer.UserType = await _context.UserTypes.FirstOrDefaultAsync(u => u.Id == customer.UserTypeId);
+            customer.UserType.Discount = await _context.Discounts.FirstOrDefaultAsync(d => d.Id == customer.UserType.DiscountId);
+            await _context.Customers.AddAsync(customer);
+            return await SaveChangesAsync();
 
-            return null;
 
         }
 

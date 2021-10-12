@@ -14,6 +14,7 @@ namespace Domain.Models
         public int CustomerId { get; set; }
         public double Amount { get; set; }
         public double InvoiceAmount { get; set; }
+        public double AmountBasedDiscount { get; set; }
         public ICollection<Product> Products { get; set; }
     }
 }

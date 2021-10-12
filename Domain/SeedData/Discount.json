@@ -6,5 +6,9 @@
   {
     "Type": "Affiliate",
     "Percentage": 10
+  },
+  {
+    "Type": "Regular",
+    "Percentage": 0
   }
 ]

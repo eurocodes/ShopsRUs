@@ -32,7 +32,7 @@ namespace ShopsRUs.Controllers
         }
 
         [HttpGet("get-by-type")]
-        public async Task<IActionResult> GetByName([FromQuery] string type)
+        public async Task<IActionResult> GetByType([FromQuery] string type)
         {
             var discount = await _repository.GetDiscountByTypeAsync(type);
             if (discount == null) return NotFound();

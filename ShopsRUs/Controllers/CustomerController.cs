@@ -56,7 +56,7 @@ namespace ShopsRUs.Controllers
 
             var createdCustomer = await _repository.CreateCustomerAsync(_mapper.Map<Customer>(customer));
 
-            if (await _repository.SaveChangesAsync()) return Ok(createdCustomer);
+            if (createdCustomer) return Ok(customer);
             return BadRequest();
 
         }
